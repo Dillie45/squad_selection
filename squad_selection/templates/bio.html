@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Player Bio</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bio.css') }}">
+    </head>
+    <body>
+        <div class="bio-container">
+            <h1>Player Bio</h1>
+            {% if bio %}
+                <div class="bio-details">
+                    <p><b>Full Name:</b> {{bio[0][0]}}</p>
+                    <p><b>Born:</b> {{bio[0][1]}}</p>
+                    <p><b>Age:</b> {{bio[0][2]}}</p>
+                    <p><b>Playing Role:</b> {{bio[0][3]}}</p>
+                    <p><b>Bio:</b> <span class="bio-text">{{bio[0][4]}}</span></p>
+                </div>
+            {% endif %}
+            <button id="best">Go to My 11</button>
+        </div>
+    </body>
+    <script>
+        document.getElementById('best').addEventListener("click", function() {
+            window.location.href = "{{ url_for('best') }}";
+        });
+    </script>
+</html>

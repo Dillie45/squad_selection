@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>all rounder</title>
+                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='allrounder.css') }}">
+              </head>
+            <body>
+
+                <div class="container">
+                    <h1>All rounder</h1>
+        <form id="allrounder" method="post" action="{{ url_for('fetch_allrounder_data') }}">
+            <div class="form-group">
+            <label for="runs">Runs : </label>
+            <input type="number" id="runs" name="runs" placeholder="more than"><br><br>
+            </div>
+            <div class="form-group">
+            <label for="runs">Strikerate : </label>
+            <input type="number" id="strikerate" name="strikerate" placeholder="more than"><br><br>
+            </div>
+            <div class="form-group">
+            <label for="wkts">Wkts : </label>
+            <input type="number" id="wkts" name="wkts" placeholder="more than"><br><br>
+            </div>
+            <div class="form-group">
+            <label for="average">Average : </label>
+            <input type="number" id="average" name="average" placeholder="less than"><br><br>
+            </div>
+            <input type="submit" value="Get Players">     
+        </form>
+
+        <div class="table-container">
+        <form action="{{ url_for('best11_process') }}" class="card2" id="best11" method="post">
+            {% if(name) %}
+            <table>
+            <div class="playerdata">
+                <tr>
+                <th>Name</th>
+                <th>Batting Style</th>
+                <th>Bowling Style</th>
+                <th>Playing Role</th>
+                <th>Matches</th>
+                <th>Runs</th>
+                <th>Wickets</th>
+                <th>Strike Rate</th>
+                <th>Select</th>
+                </tr>
+            {% for i in range(n) %}
+              <tr>
+              <td>{{ name[i] }}</td>
+              <td>{{ batting[i] }}</td>
+              <td>{{ bowling[i] }}</td>
+              <td>{{ role[i] }}</td>
+              <td>{{ totalmatches[i] }}</td>
+              <td>{{ totalruns[i] }}</td>
+              <td>{{ totalwkts[i] }}</td>
+              <td>{{ totalstrikerate[i] }}</td>
+              <td class="select-button">
+                <button type="submit" name="player" value="{{ name[i] }}">Select</button>
+            </td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+  </form>
+</div>
+</div>
+</body>
+</html>

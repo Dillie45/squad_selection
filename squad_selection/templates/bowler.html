@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Bowler</title>
+                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bowler.css') }}">
+              </head>
+            <body>
+
+                
+                <div class="container">
+                    <h1>Bowler</h1>
+        <form id="bowler" method="post" action="{{ url_for('fetch_bowler_data') }}">
+            <div class="form-group">
+            <label for="wkts">Wkts : </label>
+            <input type="number" id="wkts" name="wkts" placeholder="more than"><br><br>
+            </div>
+            <div class="form-group">
+            <label for="average">Average : </label>
+            <input type="number" id="average" name="average" placeholder="less than"><br><br>
+            </div>
+            <div class="form-group">
+            <label for="economy">Economy : </label>
+            <input type="number" id="economy" name="economy" placeholder="less than"><br><br>
+            </div>
+            <input type="submit" value="Get Players">     
+        </form>
+
+
+        <div class="table-container">
+            <form action="{{ url_for('best11_process') }}" class="card2" id="best11" method="post">
+              {% if(name) %}
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Playing Role</th>
+                        <th>Bowling Style</th>
+                        <th>Matches</th>
+                        <th>Wickets</th>
+                        <th>Economy</th>
+                        <th>Average</th>
+                        <th>Select</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for i in range(n) %}
+                      <tr>
+                        <td>{{ name[i] }}</td>
+                        <td>{{ role[i] }}</td>
+                        <td>{{ bowling[i] }}</td>
+                        <td>{{ totalmatches[i] }}</td>
+                        <td>{{ totalwkts[i] }}</td>
+                        <td>{{ totaleconomy[i] }}</td>
+                        <td>{{ totalaverage[i] }}</td>
+                          <td class="select-button">
+                              <button type="submit" name="player" value="{{ name[i] }}">Select</button>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+              {% endif %}
+            </form>
+          </div>
+      </div>
+  </body>
+  </html>

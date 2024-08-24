@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='best.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Squad</h1><br><br>
+            {% for player in best_player %}
+               <button class="player" id="bio" value="{{player}}">{{player}}</button><br><br>
+            {% endfor %}
+        </div><br><br>
+        {% if extra_player %}
+            <h1>Extra Players</h1>
+            {% for player in extra_player %}
+            <button class="player" id="bio" value="{{player}}">{{player}}</button>
+            {% endfor %}
+        {% endif %}
+        <button id="indexpage">Go and Select</button>
+        <div>
+            {% if(msg15) %}
+            <h2>{{msg15}}</h2>
+            {% endif %}
+        </div>
+    <script>
+        document.getElementById('indexpage').addEventListener("click",function()
+        {
+            window.location.href= "{{ url_for('index')}}"
+        });
+        function handleButtonClick(button) {
+            const playerName = button.getAttribute('value');
+            // Redirect to a Flask route with the playerName as a parameter
+            window.location.href = `/bio?player_name=${playerName}`;
+        }
+        
+        // Add click event listeners to all buttons
+        const playerButtons = document.querySelectorAll('.player');
+        playerButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                handleButtonClick(button);
+            });
+        });
+    </script>
+    </body>
+</html>

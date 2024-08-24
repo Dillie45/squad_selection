@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squad Selection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-button')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(dropdown) {
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Squad Selection</h1>
+    <section class="description">
+        <h2>Project Overview: Selecting the Best Cricket Squad</h2>
+        <p>
+            This project is dedicated to selecting the best cricket squad, including a core eleven players and a few extra players, from a pool of Indian cricketers based on their performance over the last decade. By analyzing recent data such as batting averages, bowling figures, strike rates, and overall contributions across different formats, we aim to build a well-rounded and competitive team
+        </p>
+    </section>
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown()">Pick Your Player</button>
+        <div class="dropdown-content">
+            <a href="{{ url_for('batsmen') }}">Batsmen</a>
+            <a href="{{ url_for('allrounder') }}">All Rounder</a>
+            <a href="{{ url_for('bowler') }}">Bowler</a>
+        </div>
+    </div>
+    {% if (msg) %}
+    <p class="message">{{msg}}</p>
+    {% endif %}
+</body>
+</html>

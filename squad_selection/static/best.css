@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url('../static/best.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px; 
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+button.player {
+    background-color: #348ee9; /* Bold, vibrant color */
+    color: white;
+    padding: 15px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 50px; /* Circular shape */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 220px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.player:hover {
+    background-color: #ef6c00;
+    transform: scale(1.05); /* Slightly increase the size on hover */
+}
+
+button#indexpage {
+    background-color: #00796b;
+    color: white;
+    padding: 15px 30px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button#indexpage:hover {
+    background-color: #004d40;
+}
+
+h2 {
+    color: #d32f2f;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    button.player, button#indexpage {
+        width: 100%;
+    }
+}
